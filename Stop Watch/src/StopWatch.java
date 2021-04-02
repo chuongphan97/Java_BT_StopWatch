@@ -42,12 +42,25 @@ public class StopWatch {
     }
 
     public static void main(String[] args) {
-        StopWatch sw = new StopWatch();
-        System.out.println("Start!");
-        sw.start();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Stop?");
-        String stop = scanner.nextLine();
+        int[] arr = new int[100000];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (int)Math.round(Math.random()*99);
+        }
+        StopWatch sw = new StopWatch();
+        System.out.println("Start sort!");
+        sw.start();
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 1;  j < arr.length ; j++) {
+                if (arr[i] < arr[j]) {
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+
+
         sw.stop();
         System.out.println(sw.getElapsedTime().toMillis() + " ms");
     }
